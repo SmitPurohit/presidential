@@ -25,10 +25,11 @@
        approval++;
 	console.log(approval);
 	var text = "Approval: " + approval + "\nTotal: " + total;
-	  var totApproval = firebase.database().ref("");
+	  var totApproval = firebase.database().ref("presidential-29357");
 
 totApproval.update ({
-   "number": approval
+   "totApproval": approval
+	"total": total
 });
     //document.getElementById("rating").innerHTML = text;
   }
