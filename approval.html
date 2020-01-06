@@ -7,9 +7,9 @@
   <body>
     <center>Approve</center>
     <form id="form" action="index.html">
-      <input type="radio" name="approve" value="true">Approve</input>
-      <input type="radio" name="unapprove" value="false">Unapprove</input>
-      <button type="submit" name="button" onclick = "rating()">Submit</button>
+      <input type="button" name="approve" value="true" onclick="rating(true)">Approve</input>
+      <input type="button" name="unapprove" value="false" onclick = "rating(false)">Unapprove</input>
+      
     </form>
 <p id = "rating"></p>
 <script>
@@ -19,10 +19,10 @@
   if(! approval){
     var approval = 0;
   }
-  function rating() {
+  function rating(var approved) {
      var form = document.getElementById("form");
      total++;
-     if(form.elements[0].value == "true")
+     if(approved == true)
        approval++;
     window.alert(approval + "out of " + total);
   }
