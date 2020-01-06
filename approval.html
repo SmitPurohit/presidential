@@ -25,7 +25,7 @@
        approval++;
 	console.log(approval);
 	var text = "Approval: " + approval + "\nTotal: " + total;
-	  var totApproval = firebase.database().ref("presidential-29357");
+	  var totApproval = firebase.database().ref("presidential-29357/");
 
 totApproval.update ({
    "totApproval": approval
