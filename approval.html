@@ -6,10 +6,26 @@
   </head>
   <body>
     <center>Approve</center>
-    <form>
+    <form id="form">
       <input type="radio" name="approve" value="true">Approve</input>
       <input type="radio" name="unapprove" value="false">Unapprove</input>
-      <button type="submit" name="button">Submit</button>
+      <button type="submit" name="button" onclick = "rating()">Submit</button>
     </form>
+<p id = "rating"></p>
+<script>
+  if(! total){
+    var total = 0;
+  }
+  if(! approval){
+    var approval = 0;
+  }
+  function rating() {
+     var form = document.getElementById("form");
+     total++;
+     if(form.elements[0].value == "true")
+       approval++;
+    console.log(approval + "out of " + total);
+  }
+</script>
   </body>
 </html>
