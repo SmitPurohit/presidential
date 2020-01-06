@@ -25,7 +25,12 @@
        approval++;
 	console.log(approval);
 	var text = "Approval: " + approval + "\nTotal: " + total;
-    document.getElementById("rating").innerHTML = text;
+	  var totApproval = firebase.database().ref("");
+
+totApproval.update ({
+   "number": approval
+});
+    //document.getElementById("rating").innerHTML = text;
   }
 
 </script>
