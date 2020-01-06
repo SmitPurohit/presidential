@@ -7,25 +7,30 @@
   <body>
     <center>Approve</center>
     <form id="form" action="index.html">
-      <input type="button" name="approve" value="true" onclick="rating(true)">Approve</input>
-      <input type="button" name="unapprove" value="false" onclick = "rating(false)">Unapprove</input>
+      <input type="button" value="Approve"  onclick="rating(true)"></input>
+      <input type="button" value="Disapprove" onclick = "rating(false)"></input>
       
     </form>
 <p id = "rating"></p>
 <script>
-  if(! total){
+  if(total == null){
     var total = 0;
   }
-  if(! approval){
+  if(total == null){
     var approval = 0;
   }
-  function rating(var approved) {
+  function rating(approved) {
+	
      var form = document.getElementById("form");
      total++;
      if(approved == true)
        approval++;
-    window.alert(approval + "out of " + total);
+	console.log(approval);
+	var text = "Approval: " + approval + "\nTotal: " + total;
+    document.getElementById("rating").innerHTML = text;
   }
+  
+  
 </script>
   </body>
 </html>
