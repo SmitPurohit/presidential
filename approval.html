@@ -12,6 +12,25 @@
 
     </form>
 <p id = "rating"></p>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var config = {
+    apiKey: "AIzaSyBayLFfDurA0OkvPu7Gksk3ywol0JjFPgQ",
+    authDomain: "presidential-29357.firebaseapp.com",
+    databaseURL: "https://presidential-29357.firebaseio.com",
+    
+    storageBucket: "presidential-29357.appspot.com"
+    
+  };
+  // Initialize Firebase
+  firebase.initializeApp(config);
+  
+  var database = firebase.database();
+</script>
 <script>
   if(total == null){
     var total = 0;
@@ -25,38 +44,17 @@
        approval++;
 	console.log(approval);
 	var text = "Approval: " + approval + "\nTotal: " + total;
-	  var totApproval = firebase.database().ref("presidential-29357/");
+	var ref = firebase.database().ref('presidential-29357');
 
-totApproval.update ({
-   "totApproval": approval
-	"total": total
+	var totalRef = ref.child('total');
+
+totalRef.transaction(function(total) {
+   return total + 1;
 });
     //document.getElementById("rating").innerHTML = text;
   }
 
 </script>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBayLFfDurA0OkvPu7Gksk3ywol0JjFPgQ",
-    authDomain: "presidential-29357.firebaseapp.com",
-    databaseURL: "https://presidential-29357.firebaseio.com",
-    projectId: "presidential-29357",
-    storageBucket: "presidential-29357.appspot.com",
-    messagingSenderId: "521503005949",
-    appId: "1:521503005949:web:1e9ca494fcb74aef423294",
-    measurementId: "G-VKCEWDLV4Z"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
   </body>
 </html>
