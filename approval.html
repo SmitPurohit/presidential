@@ -40,18 +40,26 @@
 
      var form = document.getElementById("form");
      total++;
-     if(approved == true)
-       approval++;
+     
 	console.log(approval);
-	var text = "Approval: " + approval + "\nTotal: " + total;
-	var ref = firebase.database().ref('presidential-29357');
+	
+	var ref = firebase.database().ref('/');
 
 	var totalRef = ref.child('total');
-
-totalRef.transaction(function(total) {
+	var approvalRef = ref.child('approval');
+	totalRef.transaction(function(total) {
    return total + 1;
 });
-    //document.getElementById("rating").innerHTML = text;
+	if(approved == true){
+       approvalRef.transaction(function(approval) {
+		return approval + 1;
+		});
+		}
+	ref.on("value", function(snapshot) {
+  document.getElementById("rating").innerHTML = "Approval: " + snapshot.val().approval + " out of " +snapshot.val().total;
+});
+
+    
   }
 
 </script>
