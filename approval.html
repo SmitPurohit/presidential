@@ -16,52 +16,7 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
 
-<script>
-  // Your web app's Firebase configuration
-  var config = {
-    apiKey: "AIzaSyBayLFfDurA0OkvPu7Gksk3ywol0JjFPgQ",
-    authDomain: "presidential-29357.firebaseapp.com",
-    databaseURL: "https://presidential-29357.firebaseio.com",
-    
-    storageBucket: "presidential-29357.appspot.com"
-    
-  };
-  // Initialize Firebase
-  firebase.initializeApp(config);
-  
-  var database = firebase.database();
-</script>
-<script>
-  if(total == null){
-    var total = 0;
-    var approval = 0;
-  }
-  function rating(approved) {
-
-     var form = document.getElementById("form");
-     total++;
-     
-	console.log(approval);
-	
-	var ref = firebase.database().ref('/');
-
-	var totalRef = ref.child('total');
-	var approvalRef = ref.child('approval');
-	totalRef.transaction(function(total) {
-   return total + 1;
-});
-	if(approved == true){
-       approvalRef.transaction(function(approval) {
-		return approval + 1;
-		});
-		}
-	ref.on("value", function(snapshot) {
-  document.getElementById("rating").innerHTML = "Approval: " + snapshot.val().approval + " out of " +snapshot.val().total;
-});
-
-    
-  }
-
+<script src = "rating.js">
 </script>
 
   </body>
