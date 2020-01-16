@@ -6,10 +6,18 @@
   </head>
   <body>
     <center>Approve</center>
-    <form>
-      <input type="radio" name="approve" value="true">Approve</input>
-      <input type="radio" name="unapprove" value="false">Unapprove</input>
-      <button type="submit" name="button">Submit</button>
+    <form id="form" action="index.html">
+      <input type="button" value="Approve"  onclick="rating(true)"></input>
+      <input type="button" value="Disapprove" onclick = "rating(false)"></input>
+
     </form>
+<p id = "rating"></p>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+
+<script src = "rating.js">
+</script>
+
   </body>
 </html>
